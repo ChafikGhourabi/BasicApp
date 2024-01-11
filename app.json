@@ -1,4 +1,16 @@
 {
   "name": "BasicApp",
-  "displayName": "BasicApp"
+  "displayName": "BasicApp",
+  "expo": {
+    "name": "BasicApp",
+    "slug": "BasicApp",
+    "scheme": "basic-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "jsEngine": "hermes",
+    "assetBundlePatterns": ["**/*"]
+  }
 }

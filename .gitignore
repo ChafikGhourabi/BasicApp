@@ -73,3 +73,5 @@ Gemfile.lock
 .expo
 dist/
 web-build/
+
+.env
