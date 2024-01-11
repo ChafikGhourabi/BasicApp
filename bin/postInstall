@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+/**
+ * Do all things that need to be done after installing packages (with yarn, npm, pnpm).
+ *
+ * Yes, it slows down package installation a little, but it's nice to not
+ * have to remember these extra steps.
+ */
+
+// Patch any packages that need patching
+run('npx patch-package');
+
+/**
+ * On darwin machine:
+ *   1. Check if CocoaPods CLI is installed (and if not, install it)
+ *   2. Find an Xcode project dir
+ *   3. Run `pod install`, if fails run `pod repo update` and try again
+ */
+run('yarn pod');
+
+// Run baby run
+function run(command) {
+  const chalk = require('chalk');
+  console.info(
+    `${chalk.black.bgYellow(
+      '[INFO]',
+    )} ./bin/postInstall script running: ${chalk.green(command)}`,
+  );
+
+  try {
+    require('child_process').execSync(command, { stdio: 'inherit' });
+  } catch (error) {
+    console.error(
+      `${chalk.black.bgRed(
+        '[ERROR]',
+      )} ./bin/postInstall failed on command:\n  ${chalk.greencommand}`,
+    );
+    process.exit(error.status);
+  }
+}

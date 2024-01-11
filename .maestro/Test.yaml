@@ -1,0 +1,8 @@
+# Open the app 
+
+appId: com.basicapp # the app id of the app we want to test
+# You can find the appId of an Ignite app in the `app.json` file
+# as the "package" under the "android" section and "bundleIdentifier" under the "ios" section
+---
+- clearState # clears the state of the app (navigation and authentication)
+- launchApp # launches the app
