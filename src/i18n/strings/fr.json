@@ -1,0 +1,19 @@
+{
+  "common": {
+    "appName": {
+      "full": "Application basique React Native",
+      "initials": "ABRN"
+    }
+  },
+  "example": {
+    "helloUser": "Salut, je m'appelle {{name}}"
+  },
+  "errors": {
+    "error": "Quelque chose s'est mal passé."
+  },
+  "welcome": {
+    "title": "Bienvenue sur",
+    "subtitle": "$t(common:appName.full)",
+    "description": "Voulez-vous découvrir certaines fonctionnalités ? Il vous suffit de cliquer sur l'un des trois boutons en bas de l'écran. Le premier vous permet d'appeler une API REST. Le deuxième vous permet de changer la couleur du thème. Et le troisième vous permet de changer la langue."
+  }
+}

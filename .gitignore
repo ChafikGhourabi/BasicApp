@@ -75,3 +75,5 @@ dist/
 web-build/
 
 .env
+
+ios/Podfile.lock
