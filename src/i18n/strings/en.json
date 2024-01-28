@@ -3,13 +3,16 @@
     "appName": {
       "full": "React Native Basic App",
       "initials": "RNBA",
-      "test":{
+      "test": {
         "test": "aze"
       }
     }
   },
   "example": {
     "helloUser": "Hi, my name is {{name}}"
+  },
+  "button": {
+    "language": "Change Language to {{language}}"
   },
   "errors": {
     "error": "Something went wrong."

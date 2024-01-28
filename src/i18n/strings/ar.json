@@ -8,6 +8,9 @@
   "example": {
     "helloUser": "مرحبًا، اسمي {{name}}"
   },
+  "button": {
+    "language": "تغيير اللغة إلى {{language}}"
+  },
   "errors": {
     "error": "حدث خطأ ما."
   },
