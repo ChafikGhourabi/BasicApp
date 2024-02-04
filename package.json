@@ -23,12 +23,14 @@
     "postinstall": "node ./bin/postInstall"
   },
   "dependencies": {
+    "@expo-google-fonts/space-grotesk": "^0.2.3",
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-native-masked-view/masked-view": "^0.3.1",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/stack": "^6.3.20",
     "expo": "~50.0.4",
+    "expo-font": "^11.10.2",
     "expo-splash-screen": "~0.26.2",
     "i18next": "^23.7.16",
     "react": "18.2.0",

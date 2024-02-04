@@ -14,6 +14,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { ErrorBoundary } from '@/screens/ErrorScreen/ErrorBoundary';
 import { AppNavigator, useNavigationPersistence } from '@/navigators';
 import * as storage from '@/utils/storage';
+import { useFonts } from 'expo-font';
+import { customFontsToLoad } from '@/theme';
 
 export const NAVIGATION_PERSISTENCE_KEY = 'NAVIGATION_STATE';
 
@@ -27,9 +29,17 @@ function App(): React.JSX.Element {
     isNavigationStateRestored,
   } = useNavigationPersistence(storage, NAVIGATION_PERSISTENCE_KEY);
 
+  const [areFontsLoaded] = useFonts(customFontsToLoad);
+
   useEffect(() => {
-    setTimeout(SplashScreen.hideAsync, 500);
-  }, []);
+    if (isNavigationStateRestored && areFontsLoaded) {
+      setTimeout(SplashScreen.hideAsync, 500);
+    }
+  }, [isNavigationStateRestored, areFontsLoaded]);
+
+  if (!isNavigationStateRestored || !areFontsLoaded) {
+    return <></>;
+  }
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
