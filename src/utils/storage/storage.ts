@@ -83,3 +83,20 @@ export async function clear(): Promise<boolean> {
     return false;
   }
 }
+
+/**
+ * Loads all the data from storage and runs it thru JSON.parse.
+ */
+export async function loadAll(): Promise<{ [key: string]: any }> {
+  try {
+    const keys = await AsyncStorage.getAllKeys();
+    const keyValuePairs = await AsyncStorage.multiGet(keys);
+    const almostThere: { [key: string]: any } = {};
+    keyValuePairs.forEach(([key, value]) => {
+      almostThere[key] = JSON.parse(value || 'null');
+    });
+    return almostThere;
+  } catch (error) {
+    return {};
+  }
+}
