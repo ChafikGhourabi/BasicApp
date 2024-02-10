@@ -1,3 +1,3 @@
-import './config';
+import './i18n';
 
 export * from './useTranslate';

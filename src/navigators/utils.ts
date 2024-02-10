@@ -149,15 +149,12 @@ export function useNavigationPersistence(
         | NavigationProps['initialState']
         | null;
       if (state) setInitialNavigationState(state);
-      console.log('loaded state =>', state);
     } finally {
       if (isMounted()) setIsRestored(true);
     }
   };
 
   useEffect(() => {
-    console.log('isRestored:>', isRestored);
-
     if (!isRestored) restoreState();
   }, [isRestored]);
 

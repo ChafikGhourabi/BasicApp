@@ -24,15 +24,6 @@ const ProfileScreen: FC<ProfileScreenProps> = () => {
         // ...inset,
       }}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      {/* <Text
-        style={{
-          color: isDarkMode ? 'white' : 'black',
-          fontSize: 24,
-          fontWeight: 'bold',
-          textAlign: 'center',
-        }}>
-        ProfileScreen
-      </Text> */}
       <View
         style={{
           flex: 1,
@@ -60,7 +51,7 @@ const ProfileScreen: FC<ProfileScreenProps> = () => {
         <Button
           title={t('button:language', { language: 'Français' })}
           onPress={() => {
-            setLocale('fr');
+            setLocale('ar');
           }}
         />
         <Button

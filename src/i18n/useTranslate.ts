@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import { I18nManager } from 'react-native';
 import { TOptionsBase } from 'i18next';
 import { useTranslation, UseTranslationOptions } from 'react-i18next';
+
 import { Locales, Translations, TxKeyPath } from './types';
+import { LocalizationContext } from './context';
 
 interface TranslationHook {
   setLocale: (locale: Locales, callback?: () => void) => void;
@@ -11,26 +14,34 @@ interface TranslationHook {
 
 export function useTranslate(
   translations?: Translations[],
-  options?: UseTranslationOptions<any>,
+  options?: UseTranslationOptions<TxKeyPath>,
 ): TranslationHook {
   const {
     t: translate,
     i18n: { language, changeLanguage },
   } = useTranslation(translations, options);
 
+  const { setLocale } = useContext(LocalizationContext);
+
+  const changeDirection = (isRTL: boolean) => {
+    I18nManager.allowRTL(isRTL);
+    I18nManager.forceRTL(isRTL);
+  };
+
   const t: TranslationHook['t'] = (key, option) => translate(key, option);
 
-  const setLocale: TranslationHook['setLocale'] = (locale, callback) => {
+  const setLanguage: TranslationHook['setLocale'] = (locale, callback) => {
     if (locale === language) return;
     const isArabic = language === 'ar';
-    if (!isArabic && locale === 'ar') I18nManager.forceRTL(true);
-    if (isArabic && locale !== 'ar') I18nManager.forceRTL(false);
+    if (!isArabic && locale === 'ar') changeDirection(true);
+    if (locale !== 'ar') changeDirection(false);
     changeLanguage(locale, callback);
+    setLocale?.(locale);
   };
 
   return {
     t,
-    setLocale,
+    setLocale: setLanguage,
     locale: language,
   };
 }

@@ -16,6 +16,9 @@ import { AppNavigator, useNavigationPersistence } from '@/navigators';
 import * as storage from '@/utils/storage';
 import { useFonts } from 'expo-font';
 import { customFontsToLoad } from '@/theme';
+import { LocalizationProvider } from '@/i18n/context';
+import { I18nextProvider, I18nContext } from 'react-i18next';
+import i18n from '@/i18n/i18n';
 
 export const NAVIGATION_PERSISTENCE_KEY = 'NAVIGATION_STATE';
 
@@ -42,14 +45,16 @@ function App(): React.JSX.Element {
   }
 
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <ErrorBoundary catchErrors="always">
-        <AppNavigator
-          initialState={initialNavigationState}
-          onStateChange={onNavigationStateChange}
-        />
-      </ErrorBoundary>
-    </SafeAreaProvider>
+    <LocalizationProvider>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <ErrorBoundary catchErrors="always">
+          <AppNavigator
+            initialState={initialNavigationState}
+            onStateChange={onNavigationStateChange}
+          />
+        </ErrorBoundary>
+      </SafeAreaProvider>
+    </LocalizationProvider>
   );
 }
 

@@ -24,15 +24,6 @@ const HomeScreen: FC<HomeScreenProps> = ({}) => {
         // ...inset,
       }}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      {/* <Text
-        style={{
-          color: isDarkMode ? 'white' : 'black',
-          fontSize: 24,
-          fontWeight: 'bold',
-          textAlign: 'center',
-        }}>
-        HomeScreen
-      </Text> */}
       <View
         style={{
           flex: 1,
@@ -65,7 +56,7 @@ const HomeScreen: FC<HomeScreenProps> = ({}) => {
         />
         <Button
           title="Navigate to Profile"
-          onPress={() => {
+          onPress={async () => {
             navigate('Profile');
           }}
         />

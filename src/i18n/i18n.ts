@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { getLocales } from 'expo-localization';
 
 import { Translations, TupleUnion } from './types';
 import en from './strings/en.json';
@@ -10,6 +11,8 @@ export const ns = Object.keys(en) as TupleUnion<Translations>;
 
 export const defaultNS = ns[0];
 
+const systemLanguage = getLocales()[0].languageCode || 'en';
+
 void i18n.use(initReactI18next).init({
   ns,
   defaultNS,
@@ -18,8 +21,8 @@ void i18n.use(initReactI18next).init({
     fr,
     ar,
   },
-  lng: 'en',
-  fallbackLng: 'en',
+  lng: systemLanguage,
+  fallbackLng: systemLanguage,
   interpolation: {
     escapeValue: false, // not needed for react as it escapes by default
   },
