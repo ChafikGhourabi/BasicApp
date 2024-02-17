@@ -9,7 +9,8 @@ import { HomeScreen, ProfileScreen } from '@/screens';
 import { useColorScheme } from 'react-native';
 import Config from '@/config';
 import { navigationRef, useBackButtonHandler } from './utils';
-import { AppStackParamList } from './types';
+import { AppStackParamList, NavigationProps } from './types';
+import { useTheme } from '@/theme';
 
 const Stack = createStackNavigator<AppStackParamList>();
 
@@ -29,18 +30,15 @@ function AppStack() {
   );
 }
 
-export interface NavigationProps
-  extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
-
 export function AppNavigator(props: NavigationProps) {
-  const colorScheme = useColorScheme();
+  const { colors, theme } = useTheme();
 
   useBackButtonHandler(routeName => Config.exitRoutes.includes(routeName));
 
   return (
     <NavigationContainer
       ref={navigationRef}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+      theme={{ colors, dark: theme === 'dark' }}
       {...props}>
       <AppStack />
     </NavigationContainer>

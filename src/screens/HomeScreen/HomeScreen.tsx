@@ -1,28 +1,31 @@
-import { View, Text, StatusBar, useColorScheme, Button } from 'react-native';
+import {
+  View,
+  Text,
+  StatusBar,
+  useColorScheme,
+  Button,
+  StyleSheet,
+} from 'react-native';
 import React, { FC } from 'react';
 import { useTranslate } from '@/i18n';
 import { useSafeAreaInsetsStyle } from '@/hooks';
 import { useNavigation } from '@react-navigation/native';
 import { AppStackScreenProps } from '@/navigators';
+import { ThemeType, useTheme } from '@/theme';
 
 interface HomeScreenProps extends AppStackScreenProps<'Home'> {}
 
 const HomeScreen: FC<HomeScreenProps> = ({}) => {
-  const isDarkMode = useColorScheme() === 'dark';
   const { setLocale, t, locale } = useTranslate();
+  const { colors, switchTheme, theme } = useTheme();
+  const isDarkMode = theme === 'dark';
   const { navigate } = useNavigation();
+  const style = makeStyle(colors);
 
   const inset = useSafeAreaInsetsStyle(['top']);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: isDarkMode ? 'black' : 'white',
-        // justifyContent: 'center',
-        alignItems: 'center',
-        // ...inset,
-      }}>
+    <View style={style.mainContainer}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <View
         style={{
@@ -50,19 +53,27 @@ const HomeScreen: FC<HomeScreenProps> = ({}) => {
         </Text>
         <Button
           title={t('button:language', { language: 'English' })}
-          onPress={() => {
-            setLocale('en');
-          }}
+          onPress={() => setLocale('en')}
         />
         <Button
           title="Navigate to Profile"
-          onPress={async () => {
-            navigate('Profile');
-          }}
+          onPress={() => navigate('Profile')}
         />
+        <Button title="Switch theme" onPress={() => switchTheme()} />
       </View>
     </View>
   );
 };
 
 export default HomeScreen;
+
+const makeStyle = (colors: ThemeType['colors']) =>
+  StyleSheet.create({
+    mainContainer: {
+      flex: 1,
+      backgroundColor: colors.background,
+      // justifyContent: 'center',
+      alignItems: 'center',
+      // ...inset,
+    },
+  });

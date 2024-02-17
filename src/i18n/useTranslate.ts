@@ -3,11 +3,11 @@ import { I18nManager } from 'react-native';
 import { TOptionsBase } from 'i18next';
 import { useTranslation, UseTranslationOptions } from 'react-i18next';
 
-import { Locales, Translations, TxKeyPath } from './types';
-import { LocalizationContext } from './context';
+import { Locale, Translations, TxKeyPath } from './types';
+import { useTheme } from '@/theme';
 
 interface TranslationHook {
-  setLocale: (locale: Locales, callback?: () => void) => void;
+  setLocale: (locale: Locale, callback?: () => void) => void;
   t: (key: TxKeyPath, option?: TOptionsBase & Record<string, any>) => string;
   locale: string;
 }
@@ -21,7 +21,7 @@ export function useTranslate(
     i18n: { language, changeLanguage },
   } = useTranslation(translations, options);
 
-  const { setLocale } = useContext(LocalizationContext);
+  const { setLocale } = useTheme();
 
   const changeDirection = (isRTL: boolean) => {
     I18nManager.allowRTL(isRTL);

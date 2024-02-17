@@ -1,9 +1,13 @@
 import type {
   CompositeScreenProps,
+  NavigationContainer,
   NavigatorScreenParams,
 } from '@react-navigation/native';
 import type { StackScreenProps } from '@react-navigation/stack';
 // import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+
+export interface NavigationProps
+  extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
 
 export type AppStackParamList = {
   // Tab: NavigatorScreenParams<HomeTabParamList>;

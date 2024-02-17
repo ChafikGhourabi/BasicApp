@@ -1,6 +1,6 @@
 import en from './strings/en.json';
 
-export type Locales = 'en' | 'fr' | 'ar';
+export type Locale = 'en' | 'fr' | 'ar';
 export type Translations = keyof typeof en;
 export type TxKeyPath = RecursiveKeyOf<typeof en>;
 /**

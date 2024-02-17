@@ -4,12 +4,14 @@ import { useTranslate } from '@/i18n';
 import { useSafeAreaInsetsStyle } from '@/hooks';
 import { useNavigation } from '@react-navigation/native';
 import { AppStackScreenProps } from '@/navigators';
+import { useTheme } from '@/theme';
 
 interface ProfileScreenProps extends AppStackScreenProps<'Profile'> {}
 
 const ProfileScreen: FC<ProfileScreenProps> = () => {
   const { setLocale, t, locale } = useTranslate();
-  const isDarkMode = useColorScheme() === 'dark';
+  const { colors, theme } = useTheme();
+  const isDarkMode = theme === 'dark';
 
   const inset = useSafeAreaInsetsStyle(['top']);
   const { navigate } = useNavigation();
@@ -50,16 +52,9 @@ const ProfileScreen: FC<ProfileScreenProps> = () => {
         </Text>
         <Button
           title={t('button:language', { language: 'Français' })}
-          onPress={() => {
-            setLocale('ar');
-          }}
+          onPress={() => setLocale('fr')}
         />
-        <Button
-          title="Navigate to Home"
-          onPress={() => {
-            navigate('Home');
-          }}
-        />
+        <Button title="Navigate to Home" onPress={() => navigate('Home')} />
       </View>
     </View>
   );
