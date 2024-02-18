@@ -71,9 +71,9 @@ const colors = {
   dark: paletteDark,
 } as const;
 
-export type Theme = 'light' | 'dark';
+export type Theme = 'light' | 'dark' | 'system';
 
-export const generateColors = (theme: Theme) => ({
+export const generateColors = (theme: Exclude<Theme, 'system'>) => ({
   /**
    * The palette is available to use, but prefer using the name.
    * This is only included for rare, one-off cases. Try to use
