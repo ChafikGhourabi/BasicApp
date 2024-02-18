@@ -10,8 +10,7 @@ interface ProfileScreenProps extends AppStackScreenProps<'Profile'> {}
 
 const ProfileScreen: FC<ProfileScreenProps> = () => {
   const { setLocale, t, locale } = useTranslate();
-  const { colors, theme } = useTheme();
-  const isDarkMode = theme === 'dark';
+  const { theme, toggleTheme, isDarkMode } = useTheme();
 
   const inset = useSafeAreaInsetsStyle(['top']);
   const { navigate } = useNavigation();
@@ -55,6 +54,10 @@ const ProfileScreen: FC<ProfileScreenProps> = () => {
           onPress={() => setLocale('fr')}
         />
         <Button title="Navigate to Home" onPress={() => navigate('Home')} />
+        <Button
+          title="Switch theme to system"
+          onPress={() => toggleTheme('system')}
+        />
       </View>
     </View>
   );

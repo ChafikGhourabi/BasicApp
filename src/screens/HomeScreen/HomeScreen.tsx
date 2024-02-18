@@ -17,8 +17,7 @@ interface HomeScreenProps extends AppStackScreenProps<'Home'> {}
 
 const HomeScreen: FC<HomeScreenProps> = ({}) => {
   const { setLocale, t, locale } = useTranslate();
-  const { colors, switchTheme, theme } = useTheme();
-  const isDarkMode = theme === 'dark';
+  const { colors, toggleTheme, theme, isDarkMode } = useTheme();
   const { navigate } = useNavigation();
   const style = makeStyle(colors);
 
@@ -59,7 +58,10 @@ const HomeScreen: FC<HomeScreenProps> = ({}) => {
           title="Navigate to Profile"
           onPress={() => navigate('Profile')}
         />
-        <Button title="Switch theme" onPress={() => switchTheme()} />
+        <Button
+          title="Switch theme"
+          onPress={() => toggleTheme(theme == 'dark' ? 'light' : 'dark')}
+        />
       </View>
     </View>
   );
