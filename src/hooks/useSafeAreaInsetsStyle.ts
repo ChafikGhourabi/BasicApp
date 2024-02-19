@@ -1,7 +1,6 @@
+import { ExtendedEdge } from '@/types/hooks';
 import { FlexStyle } from 'react-native';
-import { Edge, useSafeAreaInsets } from 'react-native-safe-area-context';
-
-export type ExtendedEdge = Edge | 'start' | 'end';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const propertySuffixMap = {
   top: 'Top',

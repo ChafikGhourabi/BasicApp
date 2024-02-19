@@ -3,8 +3,8 @@ import React, { FC } from 'react';
 import { useTranslate } from '@/i18n';
 import { useSafeAreaInsetsStyle } from '@/hooks';
 import { useNavigation } from '@react-navigation/native';
-import { AppStackScreenProps } from '@/navigators';
 import { useTheme } from '@/theme';
+import { AppStackScreenProps } from '@/types/navigators';
 
 interface ProfileScreenProps extends AppStackScreenProps<'Profile'> {}
 

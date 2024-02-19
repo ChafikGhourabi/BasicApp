@@ -8,19 +8,12 @@ import {
 } from 'react';
 import { useLocales } from 'expo-localization';
 
-import type { Locale } from '../i18n';
-import { Theme, generateColors } from './colors';
+import { generateColors } from './colors';
 import switchTheme from 'react-native-theme-switch-animation';
 import { useColorScheme } from 'react-native';
 import * as storage from '@/utils/storage';
-
-export type ThemeType = {
-  setLocale: (locale: Locale) => void;
-  toggleTheme: (theme: Theme) => void;
-  colors: ReturnType<typeof generateColors>;
-  isDarkMode: boolean;
-  theme: Theme;
-};
+import { Theme, ThemeType } from '@/types/theme';
+import { Locale } from '@/types/i18n';
 
 export const ThemeContext = createContext<ThemeType | undefined>(undefined);
 

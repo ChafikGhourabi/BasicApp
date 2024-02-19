@@ -5,10 +5,11 @@ import {
 import { BackHandler, Platform } from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import Config from '@/config';
-import { AppStackParamList, NavigationProps } from '.';
+// import { AppStackParamList, NavigationProps } from '.';
 import { PersistNavigationConfig } from '@/config/config.base';
 import { useIsMounted } from '@/hooks/useIsMounted';
 import * as storage from '@/utils/storage';
+import { AppStackParamList, NavigationProps } from '@/types/navigators';
 
 type Storage = typeof storage;
 

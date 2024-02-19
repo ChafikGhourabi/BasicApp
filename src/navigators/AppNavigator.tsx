@@ -9,19 +9,18 @@ import { HomeScreen, ProfileScreen } from '@/screens';
 import { useColorScheme } from 'react-native';
 import Config from '@/config';
 import { navigationRef, useBackButtonHandler } from './utils';
-import { AppStackParamList, NavigationProps } from './types';
+// import { AppStackParamList, NavigationProps } from './types';
 import { useTheme } from '@/theme';
+import { AppStackParamList, NavigationProps } from '@/types/navigators';
 
 const Stack = createStackNavigator<AppStackParamList>();
 
 function AppStack() {
   return (
     <Stack.Navigator
-      screenOptions={
-        {
-          // headerShown: false,
-        }
-      }
+      screenOptions={{
+        headerShown: false,
+      }}
       // initialRouteName={true ? 'Home' : 'Profile'}
     >
       <Stack.Screen name="Home" component={HomeScreen} />

@@ -1,3 +1,5 @@
+import { ColorTheme } from "@/types/theme";
+
 const palette = {
   neutral100: '#FFFFFF',
   neutral200: '#F4F2F1',
@@ -71,9 +73,7 @@ const colors = {
   dark: paletteDark,
 } as const;
 
-export type Theme = 'light' | 'dark' | 'system';
-
-export const generateColors = (theme: Exclude<Theme, 'system'>) => ({
+export const generateColors = (theme: ColorTheme) => ({
   /**
    * The palette is available to use, but prefer using the name.
    * This is only included for rare, one-off cases. Try to use

@@ -2,7 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { getLocales } from 'expo-localization';
 
-import { Translations, TupleUnion } from './types';
+import { Translations, TupleUnion } from '@/types/i18n';
 import en from './strings/en.json';
 import fr from './strings/fr.json';
 import ar from './strings/ar.json';

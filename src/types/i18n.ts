@@ -1,4 +1,4 @@
-import en from './strings/en.json';
+import en from '@/i18n/strings/en.json';
 
 export type Locale = 'en' | 'fr' | 'ar';
 export type Translations = keyof typeof en;
